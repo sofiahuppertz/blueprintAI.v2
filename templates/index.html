@@ -8,7 +8,7 @@
 <div class="header">
     <div id="text-header">
         <h2 class="darker"><b>BLUEPRINT AI</b></h2>
-        <h5 class="lighter"><i>VISUALIZE YOUR FUTURE REAL ESTATE PROJECT IN 5 MINUTES</i></h5>
+        <h5 class="lighter"><i>VISUALIZE YOUR NEXT REAL ESTATE PROJECT</i></h5>
     </div>
     <form action="/logout" method="post" id="logout-form">
         <button type="submit" class="btn btn-dark" name="logout-btn" id="logout-btn"><b>LogOut</b></button>
@@ -23,12 +23,11 @@
                 </div>
                 <div>
                     <select class="form-select custom-select common-select" id="buildingType" name="buildingType">
-                        <option disabled selected value="">Building Type</option>
-                        <option>Residential Apartments</option>
                         <option>Commercial Office Space</option>
-                        <option>Mixed-Use</option>
-                        <option>Retail Complex</option>
                         <option>Industrial Facility</option>
+                        <option>Mixed-Use</option>
+                        <option>Residential Apartments</option>
+                        <option>Retail Complex</option>
                     </select>
                 </div>
             </div>
@@ -38,10 +37,12 @@
                 </div>
                 <div>
                     <select class="form-select custom-select common-select" id="heightStories" name="heightStories">
-                        <option disabled selected value="">Number of Stories</option>
-                        {% for i in range(3, 101) %}
-                            <option>{{ i }}</option>
-                        {% endfor %}
+                        <option>Single Story</option>
+                        <option>Low Rise</option>
+                        <option>Mid Rise</option>
+                        <option>High Rise</option>
+                        <option>Skyscraper</option>
+                        <option>Supertall Skyscraper</option>
                     </select>
                 </div>
             </div>
@@ -51,25 +52,20 @@
                 </div>
                 <div>
                     <select class="form-select custom-select common-select" id="colorFinishes" name="colorFinishes">
-                        <option disabled selected value="">Color</option>
-                        <option>Whites and Grays</option>
-                        <option>Beiges, Browns, and Earthy Tones</option>
-                        <option>Bright and Bold Colors</option>
-                        <option>Deep Blacks and Dark Grays</option>
-                        <option>Soft Blues and Sandy Tones</option>
-                        <option>Metallic Silvers, Grays, and Bronzes</option>
-                        <option>Creams, Tans, and Warm Grays</option>
-                        <option>Pale Pinks, Lavenders, and Light Blues</option>
-                        <option>Terracotta, Olive Greens, and Mediterranean Blues</option>
-                        <option>Shades of Green from Sage to Dark Forest</option>
-                        <option>Burnt Sienna, Brick Reds, and Earth Browns</option>
-                        <option>Shades of a Single Color for a Monochrome Effect</option>
-                        <option>Bright Yellows, Turquoises, and Coral Pinks</option>
-                        <option>Deep Maroons, Navy Blues, and Rich Greens</option>
-                        <option>Oranges, Purples, and Pinks Inspired by Sunsets</option>
-                        <option>Icy Blues and Cool Grays</option>
-                        <option>Charcoal, Slate, and Dark Matte Finishes</option>
-                        <option>Gold, Copper, and Bronze Tones</option>
+                        <option>Blues</option>
+                        <option>Bronze</option>
+                        <option>Charcoal</option>
+                        <option>Dark Tones</option>
+                        <option>Earth Tones</option>
+                        <option>Gold</option>
+                        <option>Grays</option>
+                        <option>Light Grays and Beige</option>
+                        <option>Maroon</option>
+                        <option>Metallic Silvers</option>
+                        <option>Multiple Bold Colors</option>
+                        <option>Pastel Light Colors</option>
+                        <option>Sandy Tones</option>
+                        <option>Whites</option>
                     </select>
                 </div>
             </div>
@@ -79,27 +75,18 @@
                 </div>
                 <div>
                     <select class="form-select custom-select common-select" id="primaryMaterials" name="primaryMaterials">
-                        <option disabled selected value="">Primary Material</option>
-                        <option>Concrete Precast</option>
-                        <option>Stone Cladding</option>
+                        <option>Aluminum</option>
                         <option>Brick</option>
-                        <option>Steel</option>
-                        <option>Wood</option>
+                        <option>Corten Steel</option>
+                        <option>Concrete</option>
                         <option>Glass Facade</option>
-                        <option>Aluminum Composite Panels</option>
-                        <option>Terracotta Tiles</option>
-                        <option>Fiber Cement Siding</option>
-                        <option>Stucco</option>
-                        <option>Natural Stone Veneer</option>
-                        <option>Corten Steel (Weathering Steel)</option>
-                        <option>Perforated Metal Panels</option>
-                        <option>Etched Concrete</option>
-                        <option>Decorative Bricks</option>
-                        <option>Wooden Shingles</option>
                         <option>Polished Granite</option>
+                        <option>Stone Cladding</option>
+                        <option>Steel</option>
+                        <option>Stucco</option>
+                        <option>Terracotta</option>
                         <option>Textured Limestone</option>
-                        <option>Reflective Glass</option>
-                        <option>Solar Panels</option>
+                        <option>Wood</option>
                     </select>
                 </div>
             </div>
@@ -109,11 +96,9 @@
                 </div>
                 <div>
                     <select class="form-select custom-select common-select" id="locationContext" name="locationContext">
-                        <option disabled selected value="">Location Context</option>
-                        <option>Urban</option>
-                        <option>Suburban</option>
                         <option>Rural</option>
-                        <option>Coastal</option>
+                        <option>Suburban</option>
+                        <option>Urban</option>
                     </select>
                 </div>
             </div>
@@ -123,17 +108,16 @@
                 </div>
                 <div>
                     <select class="form-select custom-select common-select" id="landscapeType" name="landscapeType">
-                        <option disabled selected value=""><b>Landscape Type</b></option>
-                        <option>Flat Plains</option>
-                        <option>Hills</option>
-                        <option>Mountainous</option>
-                        <option>Sand Dunes</option>
-                        <option>Desert Landscape</option>
-                        <option>Tropical Setting</option>
-                        <option>Wetlands</option>
-                        <option>Rocky Cliffs</option>
-                        <option>Lakeside</option>
                         <option>Arctic Tundra</option>
+                        <option>Coast</option>
+                        <option>Desert</option>
+                        <option>Dunes</option>
+                        <option>Flatland</option>
+                        <option>Lakeside</option>
+                        <option>Mountain</option>
+                        <option>Rocky Mountains</option>
+                        <option>Tropics</option>
+                        <option>Valley</option>                        
                     </select>
                 </div>
             </div>
@@ -143,21 +127,21 @@
                 </div>
                 <div>
                     <select class="form-select custom-select common-select" id="architecturalStyle" name="architecturalStyle">
-                        <option disabled selected value=""><b>Architectural Style</b></option>
-                        <option>Modern</option>
-                        <option>Industrial</option>
                         <option>Art Deco</option>
-                        <option>Standard</option>
-                        <option>Minimalist</option>
-                        <option>Mediterranean</option>
-                        <option>Victorian</option>
-                        <option>Gothic Revival</option>
-                        <option>Colonial</option>
                         <option>Bauhaus</option>
                         <option>Brutalist</option>
+                        <option>Colonial</option>
+                        <option>Gothic Revival</option>
+                        <option>Industrial</option>
+                        <option>Medieval</option>
+                        <option>Mid Century Modern</option>
+                        <option>Minimalist</option>
+                        <option>Mediterranean</option>
+                        <option>Modern</option>
                         <option>Postmodern</option>
+                        <option>Standard</option>
                         <option>Tudor</option>
-                        <option>Mid Century Modern</optioN>
+                        <option>Victorian</option>
                     </select>
                 </div>
             </div>
@@ -167,7 +151,6 @@
                 </div>
                 <div>
                     <select class="form-select custom-select common-select" id="qualityTier" name="qualityTier">
-                        <option disabled selected value=""><b>Quality Tier</b></option>
                         <option>Standard</option>
                         <option>Premium</option>
                         <option>Luxury</option>
@@ -183,7 +166,7 @@
                 </div>
             </div>
             <div class="center-button">
-                <p><button id="submitFormBtn" type="submit" class="btn btn-lg btn-outline-dark"><b>GO FOR IT</b></button></p>
+                <p><button id="submitFormBtn" type="submit" class="btn btn-lg btn-outline-dark"><b>GO!</b></button></p>
             </div>
         </form>
     </div>
@@ -298,7 +281,7 @@
     height: max-content;
     border: 1px solid #3e3e3e;
     margin-bottom: 10px;
-    width: 210px;
+    width: 210px !important;
 }
 
 .center-button {
@@ -327,13 +310,6 @@ const images = [
     "{{ url_for('static', filename='loading11.png') }}",
     "{{ url_for('static', filename='loading12.png') }}",
     "{{ url_for('static', filename='loading13.png') }}",
-    "{{ url_for('static', filename='loading14.png') }}",
-    "{{ url_for('static', filename='loading15.png') }}",
-    "{{ url_for('static', filename='loading16.png') }}",
-    "{{ url_for('static', filename='loading17.png') }}",
-    "{{ url_for('static', filename='loading18.png') }}",
-    "{{ url_for('static', filename='loading19.png') }}",
-    "{{ url_for('static', filename='loading20.png') }}",
 ];
 const imageContainer = document.getElementById('image-container');
 const displayedImg = document.getElementById('image');
@@ -396,7 +372,7 @@ function checkImage() {
             image.style.animationName = 'none';
             image.src = image_url;
             showSaveImageBtn();
-            document.getElementById('submitFormBtn').disabled = "false";
+            document.getElementById('submitFormBtn').disabled = false;
         }
     }
     xhr.send();
@@ -433,7 +409,7 @@ document.getElementById('main-form').addEventListener('submit', function(event) 
             startIntervals();
             // Resetting the image fade in and out
             image.style.animationName = 'fadeInOut';
-            document.getElementById('submitFormBtn').disabled = "true";
+            document.getElementById('submitFormBtn').disabled = true;
         }
     }
     xhr.send(formData);
