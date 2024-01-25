@@ -24,23 +24,22 @@ def generate_image(prompt_description, client, image_queue):
     return
 
     
-def make_image_prompt(building_type, height, color_finishes, primary_materials, location_context, landscape_type, architectural_style, quality_tier, additional_elements):
+def make_image_prompt(building_type, height, color_finishes, primary_materials, location_context, landscape_type, architectural_style, adiciones_ecologicas, additional_elements):
     # Define the template for the building description
     template = (
-        "You are a building visualizer. Your task is to generate an image with the following description with extreme accuracy."
-        "The building type is: {building_type}. "
-        "The building height is: {height} "
-        "The building location context is (This describes the building's surroundings): {location_context}. "
-        "The landscape type is: {landscape_type}. "
-        "The building design quality is: {quality_tier}, where the available options are standard, premium and luxury. "
-        "The architectural style is: {architectural_style}. "
-        "The building facade is: {color_finishes}. "
-        "The building materials are mostly: {primary_materials}. "
-        "Here are some additional elements to add to the building: {additional_elements}. "
-        "DO NOT WRITE TEXT ON THE IMAGE. "
-        "Make the model high quality and high resolution. "
-        "The view is from a higher angle than the building, so we can see the roof top, but also the facade and the street. "
-        "The sky is blue, like a sunny and colorful day."
+        "Eres un visualizador de edificios. Tu tarea es generar una imagen siguiendo la siguiente descripción con extrema precisión. "
+        "El tipo de edificio es: {building_type}. "
+        "La altura del edificio es: {height}. (Si es más alto que el costanera center, tiene que ser MUY alto, cómo los edificios más altos del mundo). "
+        "El contexto de ubicación del edificio es (esto describe el entorno del edificio): {location_context}. "
+        "El tipo de paisaje es: {landscape_type}. "
+        "El estilo arquitectónico es: {architectural_style}. "
+        "La fachada del edificio es: {color_finishes}. "
+        "Los materiales principales del edificio son principalmente: {primary_materials}. "
+        "La característica ecológica que debe ser visible y pertence al espacio del edificio (nota: un contendor es un basurero): {adiciones_ecologicas}. "
+        "IMPORTANTE: Aquí hay algunos elementos adicionales para agregar al edificio: {additional_elements}. "
+        "NO ESCRIBAS TEXTO EN LA IMAGEN. "
+        "Haz que el modelo sea de alta calidad y alta resolución. "
+        "La vista es desde un ángulo superior al del edificio, por lo que debe mostrar el techo, la fachada y la calle, y la característica ecológica adicional debe ser visible."
     )
     # Fill in the placeholders in the template with the form values
     prompt = template.format(
@@ -50,9 +49,10 @@ def make_image_prompt(building_type, height, color_finishes, primary_materials, 
         location_context=location_context,
         landscape_type=landscape_type,
         architectural_style=architectural_style,
-        quality_tier=quality_tier,
+        adiciones_ecologicas=adiciones_ecologicas,
         primary_materials=primary_materials,
         additional_elements=additional_elements,
     )
+    print(prompt)
     # Return the prompt
     return prompt

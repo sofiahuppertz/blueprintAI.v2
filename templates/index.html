@@ -1,183 +1,188 @@
 {% extends "layout.html" %}
 
 {% block title %}
-    BlueprintAI
+    Inmobiliara Makro
 {% endblock %}
 
 {% block body %}
 <div class="header">
-    <div id="text-header">
-        <h2 class="darker"><b>BLUEPRINT AI</b></h2>
-        <h5 class="lighter"><i>VISUALIZE YOUR NEXT REAL ESTATE PROJECT</i></h5>
+    <div style="margin-right: 10px;">
+        <img src="../static/makro-logo.png" alt="Makro Logo" width="90" height="90">
     </div>
-    <form action="/logout" method="post" id="logout-form">
-        <button type="submit" class="btn btn-dark" name="logout-btn" id="logout-btn"><b>LogOut</b></button>
+    <div id="text-header">
+        <h1 class="darker"><b>Inmobiliaria Makro</b></h1>
+        <h6 class="lighter"><i>TE INVITA A INVENTAR UN EDIFICIO CON INTELIGENCIA ARTIFICIAL</i></h6>
+        </div>
+    <form action="/web" method="post" id="visit-web">
+        <button type="submit" class="btn btn-dark" name="visit-web" id="visit-web"><b>CONOCE NUESTRA WEB</b></button>
     </form>
 </div>
 <div class="container">
     <div class="right-side">
         <form method="post" action="/" id="main-form">
-            <div class="form-question" >
+            <div class="form-question">
                 <div>
-                    <label><h5>Building Type: </h5></label>
+                    <label><h5>Tipo de Edificio: </h5></label>
                 </div>
                 <div>
                     <select class="form-select custom-select common-select" id="buildingType" name="buildingType">
-                        <option>Commercial Office Space</option>
-                        <option>Industrial Facility</option>
-                        <option>Mixed-Use</option>
-                        <option>Residential Apartments</option>
-                        <option>Retail Complex</option>
+                        <option>Apartamentos Residenciales</option>
+                        <option>Complejo Comercial</option>
+                        <option>Espacio de Oficinas</option>
+                        <option>Instalación Industrial</option>
+                        <option>Uso Mixto</option>
                     </select>
                 </div>
-            </div>
-            <div class="form-question" >
+            </div>            
+            <div class="form-question">
                 <div>
-                    <label><h5>Number of Stories: </h5></label>
+                    <label><h5>Número de Pisos: </h5></label>
                 </div>
                 <div>
                     <select class="form-select custom-select common-select" id="heightStories" name="heightStories">
-                        <option>Single Story</option>
-                        <option>Low Rise</option>
-                        <option>Mid Rise</option>
-                        <option>High Rise</option>
-                        <option>Skyscraper</option>
-                        <option>Supertall Skyscraper</option>
+                        <option>Baja Altura</option>
+                        <option>Mediana Altura</option>
+                        <option>Alta Altura</option>
+                        <option>Rascacielos</option>
+                        <option>Más alto que el Costanera Center!</option>
                     </select>
                 </div>
-            </div>
+            </div>            
             <div class="form-question">
                 <div>
-                    <label><h5>Color Finishes: </h5></label>
+                    <label><h5>Acabados de Color: </h5></label>
                 </div>
                 <div>
                     <select class="form-select custom-select common-select" id="colorFinishes" name="colorFinishes">
-                        <option>Blues</option>
-                        <option>Bronze</option>
-                        <option>Charcoal</option>
-                        <option>Dark Tones</option>
-                        <option>Earth Tones</option>
-                        <option>Gold</option>
-                        <option>Grays</option>
-                        <option>Light Grays and Beige</option>
-                        <option>Maroon</option>
-                        <option>Metallic Silvers</option>
-                        <option>Multiple Bold Colors</option>
-                        <option>Pastel Light Colors</option>
-                        <option>Sandy Tones</option>
-                        <option>Whites</option>
+                        <option>Azules</option>
+                        <option>Beige y Grises Claro</option>
+                        <option>Bronce</option>
+                        <option>Blanco</option>
+                        <option>Carbón</option>
+                        <option>Colores Audaces</option>
+                        <option>Gris</option>
+                        <option>Marrón</option>
+                        <option>Marrón Arena</option>
+                        <option>Oro</option>
+                        <option>Plateados Metálicos</option>
+                        <option>Rojo Vino</option>
+                        <option>Tonos Oscuros</option>
+                        <option>Tonos Terrosos</option>
                     </select>
                 </div>
             </div>
             <div class="form-question">
                 <div>
-                    <label><h5>Primary Material: </h5></label>
+                    <label><h5>Material Principal: </h5></label>
                 </div>
                 <div>
                     <select class="form-select custom-select common-select" id="primaryMaterials" name="primaryMaterials">
-                        <option>Aluminum</option>
-                        <option>Brick</option>
-                        <option>Corten Steel</option>
-                        <option>Concrete</option>
-                        <option>Glass Facade</option>
-                        <option>Polished Granite</option>
-                        <option>Stone Cladding</option>
-                        <option>Steel</option>
-                        <option>Stucco</option>
-                        <option>Terracotta</option>
-                        <option>Textured Limestone</option>
-                        <option>Wood</option>
+                        <option>Acero</option>
+                        <option>Acero Corten</option>
+                        <option>Aluminio</option>
+                        <option>Concreto</option>
+                        <option>Fachada de Vidrio</option>
+                        <option>Granito Pulido</option>
+                        <option>Ladrillo</option>
+                        <option>Madera</option>
+                        <option>Piedra Caliza Texturizada</option>
+                        <option>Revestimiento de Piedra</option>
+                        <option>Terracota</option>
+                        <option>Estuco</option>
                     </select>
                 </div>
-            </div>
+            </div>            
             <div class="form-question">
                 <div>
-                    <label><h5>Location Context: </h5></label>
+                    <label><h5>Contexto de Ubicación: </h5></label>
                 </div>
                 <div>
                     <select class="form-select custom-select common-select" id="locationContext" name="locationContext">
-                        <option>Rural</option>
-                        <option>Suburban</option>
-                        <option>Urban</option>
+                        <option>Suburbano</option>
+                        <option>Urbano</option>
                     </select>
                 </div>
-            </div>
+            </div>            
             <div class="form-question">
                 <div>
-                    <label><h5>Landscape Type: </h5></label>
+                    <label><h5>Tipo de Entorno Natural: </h5></label>
                 </div>
                 <div>
                     <select class="form-select custom-select common-select" id="landscapeType" name="landscapeType">
-                        <option>Arctic Tundra</option>
-                        <option>Coast</option>
-                        <option>Desert</option>
-                        <option>Dunes</option>
-                        <option>Flatland</option>
-                        <option>Lakeside</option>
-                        <option>Mountain</option>
-                        <option>Rocky Mountains</option>
-                        <option>Tropics</option>
-                        <option>Valley</option>                        
+                        <option>Costa</option>
+                        <option>Desierto</option>
+                        <option>Dunas</option>
+                        <option>Montaña</option>
+                        <option>Montañas Rocosas</option>
+                        <option>Orilla del Lago</option>
+                        <option>Planicie</option>
+                        <option>Tropicales</option>
+                        <option>Tundra Ártica</option>
+                        <option>Valle</option>
                     </select>
                 </div>
             </div>
             <div class="form-question">
                 <div>
-                    <label><h5>Architectural Style: </h5></label>
+                    <label><h5>Estilo Arquitectónico: </h5></label>
                 </div>
                 <div>
                     <select class="form-select custom-select common-select" id="architecturalStyle" name="architecturalStyle">
                         <option>Art Deco</option>
                         <option>Bauhaus</option>
-                        <option>Brutalist</option>
+                        <option>Brutalista</option>
                         <option>Colonial</option>
-                        <option>Gothic Revival</option>
+                        <option>Gótico Revival</option>
                         <option>Industrial</option>
                         <option>Medieval</option>
-                        <option>Mid Century Modern</option>
-                        <option>Minimalist</option>
-                        <option>Mediterranean</option>
-                        <option>Modern</option>
-                        <option>Postmodern</option>
-                        <option>Standard</option>
+                        <option>Moderno del Siglo Medio</option>
+                        <option>Minimalista</option>
+                        <option>Mediterráneo</option>
+                        <option>Moderno</option>
+                        <option>Posmoderno</option>
+                        <option>Estándar</option>
                         <option>Tudor</option>
-                        <option>Victorian</option>
+                        <option>Victoriano</option>
                     </select>
                 </div>
             </div>
             <div class="form-question">
                 <div>
-                    <label><h5>Quality Tier: </h5></label>
+                    <label><h5>Adiciones Ecológicas: </h5></label>
                 </div>
                 <div>
-                    <select class="form-select custom-select common-select" id="qualityTier" name="qualityTier">
-                        <option>Standard</option>
-                        <option>Premium</option>
-                        <option>Luxury</option>
+                    <select class="form-select custom-select common-select" id="adicionesEcologicas" name="adicionesEcologicas">
+                        <option>Paneles Solares</option>
+                        <option>Techo Verde</option>
+                        <option>Fachada Verde</option>
+                        <option>Contenedores de reciclaje</option>
                     </select>
                 </div>
-            </div>
+            </div>            
             <div class="form-question">
                 <div>
-                    <label class="form-label"><h5>Additional Elements: </h5></label>
+                    <label class="form-label"><h5>Elementos Extra: </h5></label>
                 </div>
                 <div class="input-group">
-                    <textarea rows="3" class="form-control" placeholder="Pedestrian Plaza, Water Fountain, Public Art..." id="additionalElements" name="additionalElements"></textarea>
+                    <textarea rows="3" class="form-control" placeholder="Ej: Cancha de fútbol, Quinchos para asado, Bar de pisco sour..." id="additionalElements" name="additionalElements"></textarea>
                 </div>
             </div>
             <div class="center-button">
-                <p><button id="submitFormBtn" type="submit" class="btn btn-lg btn-outline-dark"><b>GO!</b></button></p>
+                <p><button id="submitFormBtn" type="submit" class="btn btn-lg btn-outline-dark"><b>ESTOY READY!</b></button></p>
             </div>
         </form>
     </div>
     <div class="left-side">
-        <div>
-            <button id="saveImage" class = "btn btn-outline-dark btn-lg"><b>SAVE IMAGE</b></button>
+        <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+            <button id="saveImage" class = "btn btn-outline-dark btn-lg"><b>GUARDAR</b></button>
+            <h4 id="compartenos">¡Comparte tu resultado y etiquétanos! @inmobiliaria_makro</h4>
         </div>
         <div id="image-container">
-            <img id="image" src="{{ url_for('static', filename='loading.gif') }}" class="img-fluid container-img mx-auto d-block" alt="A_i_blueprints">
+            <div>
+                <img id="image" src="{{ url_for('static', filename='loading.gif') }}" class="img-fluid container-img mx-auto d-block" alt="A_i_blueprints">
+            </div>
             <div id="text-image">
-                <b><h1>BLUEPRINT AI</h1><h3>PREVIOUS DESIGNS</h3></b>
+                <b><h1>MAKROVISTA</h1><h3>DISEÑOS ANTERIORES</h3></b>
             </div>
         </div>
     </div>
@@ -205,7 +210,7 @@
     text-align: left;
 }
 
-#logout-btn {
+#visit-web {
     margin-left: auto;
 }
 
@@ -236,6 +241,7 @@
 }
 
 #text-image {
+    justify-content: center;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -289,9 +295,16 @@
     text-align: right;
 }
 
+#compartenos {
+    display: flex;
+    font-family: 'Caveat', sans-serif;
+    text-align: left;
+    /*text-align: right !important;*/
+}
+
 #saveImage {
     display: none;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 </style>
@@ -335,6 +348,7 @@ function showSaveImageBtn () {
     document.getElementById('text-image').style.display = 'none';
     document.getElementById('text-image').style.margin = '0 !important';
     document.getElementById('saveImage').style.display = 'block';
+    document.getElementById('saveImage').disabled = false;
 }
 
 function hideSaveImageBtn () {
@@ -373,6 +387,7 @@ function checkImage() {
             image.src = image_url;
             showSaveImageBtn();
             document.getElementById('submitFormBtn').disabled = false;
+            document.getElementById('compartenos').style.setProperty('text-align', 'right', 'important');
         }
     }
     xhr.send();
@@ -396,6 +411,7 @@ document.getElementById('main-form').addEventListener('submit', function(event) 
             var response = JSON.parse(xhr.responseText);
             // Hiding save button and displaying text
             hideSaveImageBtn();
+            document.getElementById('compartenos').style.textAlign = 'left !important';
             // Changing the image text
             var b = document.querySelector('#text-image b');
             // Create a new h1 element
@@ -410,6 +426,7 @@ document.getElementById('main-form').addEventListener('submit', function(event) 
             // Resetting the image fade in and out
             image.style.animationName = 'fadeInOut';
             document.getElementById('submitFormBtn').disabled = true;
+            document.getElementById('saveImage').disabled = true;
         }
     }
     xhr.send(formData);

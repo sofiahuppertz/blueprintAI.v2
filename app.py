@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify, send_file
+from flask import Flask, render_template, request, jsonify, send_file, redirect
 from helpers import generate_image, make_image_prompt
 import os
 from openai import OpenAI
@@ -32,6 +32,11 @@ def index():
     return render_template("index.html"), 200
 
 
+
+@app.route('/web', methods=['POST'])
+def web():
+    return redirect("https://imakro.cl", code=302)
+
 @app.route('/submit_form', methods=['POST'])
 def submit_form():
     building_type = request.form.get("buildingType")
@@ -41,30 +46,13 @@ def submit_form():
     location_context = request.form.get("locationContext")
     landscape_type = request.form.get("landscapeType")
     architectural_style = request.form.get("architecturalStyle")
-    quality_tier = request.form.get("qualityTier")
+    adiciones_ecologicas = request.form.get("adicionesEcologicas")
     additional_elements = request.form.get("additionalElements")
 
-    # Validate the form values
-    if not building_type:
-        return jsonify({"message": "You forgot to enter a Building Type"}), 400
-    if not height:
-        return jsonify({"message": "You forgot to enter a Number of Stories"}), 400
-    if not color_finishes:
-        return jsonify({"message": "You forgot to enter a Color Scheme"}), 400
-    if not primary_materials:
-        return jsonify({"message": "You forgot to enter Primary Materials"}), 400
-    if not location_context:
-        return jsonify({"message": "You forgot to enter a Location Context"}), 400
-    if not landscape_type:
-        return jsonify({"message": "You forgot to enter a Landscape Type"}), 400
-    if not  architectural_style:
-        return jsonify({"message": "You forgot to enter an Architectural Style"}), 400
-    if not quality_tier:
-        return jsonify({"message": "You forgot to enter a Quality Tier"}), 400
-    prompt = make_image_prompt(building_type, height, color_finishes, primary_materials, location_context, landscape_type, architectural_style, quality_tier, additional_elements)
+    prompt = make_image_prompt(building_type, height, color_finishes, primary_materials, location_context, landscape_type, architectural_style, adiciones_ecologicas, additional_elements)
     thread = Thread(target=generate_image, args=(prompt, client, image_queue))
     thread.start()
-    return jsonify({'new_text': 'LOADING ...'})
+    return jsonify({'new_text': 'CARGANDO ...'})
 
 
 @app.route("/check_image")
@@ -86,3 +74,6 @@ def download_image():
     image_url = request.args.get('image_url')
     response = requests.get(image_url, stream=True)
     return send_file(response.raw, mimetype='image/png')
+
+if __name__ == '__main__':
+    app.run(debug=True)
