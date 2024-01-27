@@ -10,11 +10,11 @@
         <img src="../static/makro-logo.png" alt="Makro Logo" width="90" height="90">
     </div>
     <div id="text-header">
-        <h1 class="darker"><b>Inmobiliaria Makro</b></h1>
-        <h6 class="lighter"><i>TE INVITA A INVENTAR UN EDIFICIO CON INTELIGENCIA ARTIFICIAL</i></h6>
+        <h1 class="darker bold">Inmobiliaria Makro</h1>
+        <h6 class="lighter"><i>DISEÑEMOS LOS PROYECTOS DEL FUTURO CON IA</i></h6>
         </div>
     <form action="/web" method="post" id="visit-web">
-        <button type="submit" class="btn btn-dark" name="visit-web" id="visit-web"><b>CONOCE NUESTRA WEB</b></button>
+        <button type="submit" class="btn btn-dark bold" name="visit-web" id="visit-web">CONOCE NUESTRA WEB</button>
     </form>
 </div>
 <div class="container">
@@ -173,21 +173,39 @@
         </form>
     </div>
     <div class="left-side">
-        <div style="display: flex; justify-content: space-between; align-items: flex-end;">
-            <button id="saveImage" class = "btn btn-outline-dark btn-lg"><b>GUARDAR</b></button>
-            <h4 id="compartenos">¡Comparte tu resultado y etiquétanos! @inmobiliaria_makro</h4>
+        <div style="display: flex; justify-content: left; align-items: flex-end;">
+            <button id="ShareImage" data-bs-toggle="modal" data-bs-target="#shareModal" class="btn btn-light share-save"><img src="../static/share-button.webp" style="height: 24px;"></button>
+            <button id="SaveImage" class="btn btn-danger share-save bold">SAVE</button>
         </div>
         <div id="image-container">
             <div>
                 <img id="image" src="{{ url_for('static', filename='loading.gif') }}" class="img-fluid container-img mx-auto d-block" alt="A_i_blueprints">
             </div>
             <div id="text-image">
-                <b><h1>MAKROVISTA</h1><h3>DISEÑOS ANTERIORES</h3></b>
+                <h1 class="bold">MAKROVISTA</h1>
+                <h3 class="bold">DISEÑOS ANTERIORES</h3>
             </div>
         </div>
     </div>
 </div>
+<div class="modal" id="shareModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title bold center">Compartir imagen</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p><button class="btn btn-lg">1</button><button class="btn btn-lg">1</button><button class="btn btn-lg">1</button></p>
+        </div>
+      </div>
+    </div>
+  </div>
 <style>
+
+.bold {
+    font-weight: bold;
+}
 
 .darker {
     color:#3e3e3e
@@ -218,7 +236,7 @@
     display: flex;
     margin: 20px auto;
     margin-bottom: 50px;
-    align-items: flex-end;
+    align-items: center;
     padding: 0;
 }
 
@@ -295,16 +313,13 @@
     text-align: right;
 }
 
-#compartenos {
-    display: flex;
-    font-family: 'Caveat', sans-serif;
-    text-align: left;
-    /*text-align: right !important;*/
-}
-
-#saveImage {
-    display: none;
+.share-save {
+    /*display: none;*/
+    border-radius: 10px;
     margin-bottom: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+
 }
 
 </style>
@@ -328,7 +343,7 @@ const imageContainer = document.getElementById('image-container');
 const displayedImg = document.getElementById('image');
 let currentIndex = 0;
 
-function saveImage() {
+function SaveImage() {
     var url = '/download_image';
     var imageUrl = encodeURIComponent(displayedImg.src);
     
@@ -344,20 +359,21 @@ function saveImage() {
         });
 }
 
-function showSaveImageBtn () {
+function showShareSavebtns () {
     document.getElementById('text-image').style.display = 'none';
     document.getElementById('text-image').style.margin = '0 !important';
-    document.getElementById('saveImage').style.display = 'block';
-    document.getElementById('saveImage').disabled = false;
+    document.getElementById('ShareImage').style.display = 'block';
+    document.getElementById('SaveImage').style.display = 'block'
 }
 
-function hideSaveImageBtn () {
+function hideShareSavebtns () {
     document.getElementById('text-image').style.display = 'block';
     document.getElementById('text-image').style.margin = '20px !important';
-    document.getElementById('saveImage').style.display = 'none';
+    document.getElementById('ShareImage').style.display = 'none';
+    document.getElementById('SaveImage').style.display = 'none'
 }
 
-document.getElementById('saveImage').addEventListener('click', saveImage);
+document.getElementById('SaveImage').addEventListener('click', SaveImage);
 
 function clearIntervals() {
     clearInterval(rotateImagesInterval);
@@ -385,9 +401,8 @@ function checkImage() {
             var image = document.getElementById('image');
             image.style.animationName = 'none';
             image.src = image_url;
-            showSaveImageBtn();
+            showShareSavebtns();
             document.getElementById('submitFormBtn').disabled = false;
-            document.getElementById('compartenos').style.setProperty('text-align', 'right', 'important');
         }
     }
     xhr.send();
@@ -410,23 +425,24 @@ document.getElementById('main-form').addEventListener('submit', function(event) 
         if (xhr.readyState == 4 && xhr.status == 200) {
             var response = JSON.parse(xhr.responseText);
             // Hiding save button and displaying text
-            hideSaveImageBtn();
-            document.getElementById('compartenos').style.textAlign = 'left !important';
+            hideShareSavebtns();
             // Changing the image text
-            var b = document.querySelector('#text-image b');
+            var b = document.querySelector('#text-image');
             // Create a new h1 element
             var h1 = document.createElement('h1');
             h1.textContent = response.new_text;
+            console.log(response.new_text)
+            console.log(h1.textContent)
             // Replace the content of the 'b' element with the new h1 element
             b.innerHTML = '';
             b.appendChild(h1);
+            console.log(b.innerHTML)
             // Resetting the intervals
             clearIntervals();
             startIntervals();
             // Resetting the image fade in and out
             image.style.animationName = 'fadeInOut';
             document.getElementById('submitFormBtn').disabled = true;
-            document.getElementById('saveImage').disabled = true;
         }
     }
     xhr.send(formData);
